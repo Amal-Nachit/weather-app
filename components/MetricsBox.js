@@ -1,62 +1,53 @@
 import { degToCompass } from "../services/converters";
 import {
   getTime,
-  getAMPM,
   getVisibility,
   getWindSpeed,
 } from "../services/helpers";
 import { MetricsCard } from "./MetricsCard";
 import styles from "./MetricsBox.module.css";
+import { useState } from "react";
 
-export const MetricsBox = ({ weatherData, unitSystem }) => {
+export const MetricsBox = ({ weatherData }) => {
+  let date = new Date(weatherData.current.time);
+  const [hours] = useState(date.getHours());
+
   return (
     <div className={styles.wrapper}>
       <MetricsCard
-        title={"Humidity"}
+        title={"Humidité"}
         iconSrc={"/icons/humidity.png"}
-        metric={weatherData.main.humidity}
+        metric={weatherData.current.relative_humidity_2m}
         unit={"%"}
       />
       <MetricsCard
-        title={"Wind speed"}
+        title={"Vitesse du vent"}
         iconSrc={"/icons/wind.png"}
-        metric={getWindSpeed(unitSystem, weatherData.wind.speed)}
-        unit={unitSystem == "metric" ? "m/s" : "m/h"}
+        metric={getWindSpeed(weatherData.current.wind_speed_10m)}
+        unit={"m/s"}
       />
+
       <MetricsCard
-        title={"Wind direction"}
+        title={"Direction du vent"}
         iconSrc={"/icons/compass.png"}
-        metric={degToCompass(weatherData.wind.deg)}
+        metric={degToCompass(weatherData.current.wind_direction_10m)}
       />
       <MetricsCard
-        title={"Visibility"}
+        title={"Visibilité"}
         iconSrc={"/icons/binocular.png"}
-        metric={getVisibility(unitSystem, weatherData.visibility)}
-        unit={unitSystem == "metric" ? "km" : "miles"}
+        metric={getVisibility(weatherData.hourly.visibility[hours])}
+        unit={"km"}
       />
+
       <MetricsCard
-        title={"Sunrise"}
+        title={"Lever du soleil"}
         iconSrc={"/icons/sunrise.png"}
-        metric={getTime(
-          unitSystem,
-          weatherData.sys.sunrise,
-          weatherData.timezone
-        )}
-        unit={getAMPM(
-          unitSystem,
-          weatherData.sys.sunrise,
-          weatherData.timezone
-        )}
+        metric={getTime(weatherData.daily.sunrise)}
       />
       <MetricsCard
-        title={"Sunset"}
+        title={"Coucher du soleil"}
         iconSrc={"/icons/sunset.png"}
-        metric={getTime(
-          unitSystem,
-          weatherData.sys.sunset,
-          weatherData.timezone
-        )}
-        unit={getAMPM(unitSystem, weatherData.sys.sunset, weatherData.timezone)}
+        metric={getTime(weatherData.daily.sunset)}
       />
     </div>
   );

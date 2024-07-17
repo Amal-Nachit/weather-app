@@ -2,41 +2,35 @@
 
 Check the current weather on any city on the planet. Switch between metric and imperial units.
 
-![Alt img](https://images.ctfassets.net/zlsyc9paq6sa/3uBrJ07WSM40FpolgjInHY/7d886cb4187b52194bf9b63c183a1d3a/1627637330_x.gif)
+![Alt img](/Capture%20d'écran%202024-07-17%20090226.png)
 
 ## Features
 
-1. User's ability to search cities
+1. Conditions météorologiques actuelles
 
-2. Current local time and date
+2. Heure et date locales
 
-3. Temperatures and humidity
+3. Températures et humidité
 
-4. Wind speed and direction
+4. Vitesse et direction du vent
 
-5. Sunrise and sunset times
+5. Heures du lever et du coucher du soleil
 
-6. Metric vs Imperial system
+6. Système métrique
 
-7. Error handling and loading info
+7. Gestion des erreurs et chargement en cours
 
 ## Installation
 
-1. `git clone https://github.com/madzadev/weather-app.git`
+1. `git clone https://github.com/Amal-Nachit/weather-app.git`
 
 2. `cd weather-app`
 
 3. `npm install`
 
-4. Log-in to [Openweathermap.com](https://openweathermap.org/)
+4. Mettre à jour le fichier 'config.json' avec le nom, la latitude et la longitude de votre ville
 
-5. Create an API key
-
-6. `cp .env.example .env.local`
-
-7. Paste API key for `OPENWEATHER_API_KEY`
-
-8. `npm run dev`
+5. `npm run dev`
 
 ## Contributions
 

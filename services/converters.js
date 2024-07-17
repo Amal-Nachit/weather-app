@@ -10,8 +10,8 @@ export const timeTo12HourFormat = (time) => {
 };
 
 export const degToCompass = (num) => {
-  var val = Math.round(num / 22.5);
-  var arr = [
+  const val = Math.round(num / 22.5);
+  const arr = [
     "N",
     "NNE",
     "NE",
@@ -32,10 +32,11 @@ export const degToCompass = (num) => {
   return arr[val % 16];
 };
 
-export const unixToLocalTime = (unixSeconds, timezone) => {
-  let time = new Date((unixSeconds + timezone) * 1000)
-    .toISOString()
-    .match(/(\d{2}:\d{2})/)[0];
-
-  return time.startsWith("0") ? time.substring(1) : time;
+export const formattedTime = (dateTime) => {
+  const d = new Date(dateTime);
+  const hours = String(d.getHours()).padStart(2, "0");
+  const minutes = String(d.getMinutes()).padStart(2, "0");
+  return `${hours}:${minutes}`;
 };
+
+

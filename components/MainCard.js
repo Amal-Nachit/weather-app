@@ -7,7 +7,6 @@ export const MainCard = ({
   country,
   description,
   iconName,
-  unitSystem,
   weatherData,
 }) => {
   return (
@@ -17,23 +16,16 @@ export const MainCard = ({
       </h1>
       <p className={styles.description}>{description}</p>
       <Image
-        width="300px"
-        height="300px"
+        width={300}
+        height={300}
         src={`/icons/${iconName}.svg`}
         alt="weatherIcon"
       />
       <h1 className={styles.temperature}>
-        {unitSystem == "metric"
-          ? Math.round(weatherData.main.temp)
-          : Math.round(ctoF(weatherData.main.temp))}
-        °{unitSystem == "metric" ? "C" : "F"}
+        {Math.round(weatherData.current.temperature_2m)}°C
       </h1>
       <p>
-        Feels like{" "}
-        {unitSystem == "metric"
-          ? Math.round(weatherData.main.feels_like)
-          : Math.round(ctoF(weatherData.main.feels_like))}
-        °{unitSystem == "metric" ? "C" : "F"}
+        Ressenti : {Math.round(weatherData.current.apparent_temperature)}°C
       </p>
     </div>
   );
