@@ -20,9 +20,9 @@ export const useWeatherData = () => {
 
     fetchWeatherData();
 
-    // const interval = setInterval(fetchWeatherData, 3600000);
+    const interval = setInterval(fetchWeatherData, 3600000);
 
-    // return () => clearInterval(interval);
+    return () => clearInterval(interval);
   }, []);
 
   return { weatherData };
