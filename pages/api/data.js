@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { cityConfig } from "../../config.json";
 
-export const useWeatherData = () => {
+ export const WeatherComponent = () => {
   const [weatherData, setWeatherData] = useState();
 
   useEffect(() => {
@@ -25,5 +25,4 @@ export const useWeatherData = () => {
     return () => clearInterval(interval);
   }, []);
 
-  return { weatherData };
 };

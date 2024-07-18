@@ -2,7 +2,7 @@
 
 Le lien de l'application météo : https://weather-app-8zc9.vercel.app/
 
-![Alt img](/public/Capture%20d'écran%202024-07-17%20090226.png)
+![Alt img](/public/sreenshot.png)
 
 ## Features
 
